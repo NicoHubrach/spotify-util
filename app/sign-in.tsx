@@ -21,6 +21,7 @@ const discovery = {
 };
 
 export default function SignIn() {
+
   const redirectUri = makeRedirectUri({
     scheme: "spotify-util",
     path: "redirect",
@@ -30,7 +31,11 @@ export default function SignIn() {
     {
       clientId: process.env.EXPO_PUBLIC_SPOTIFY_CLIENT_ID!,
       scopes: [
+        "user-library-modify",
+        "user-library-read",
         "user-read-email",
+        "playlist-read-private",
+        "playlist-read-collaborative",
         "playlist-modify-public",
         "playlist-modify-private",
       ],
