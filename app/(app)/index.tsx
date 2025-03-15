@@ -1,18 +1,26 @@
 import { useSdk } from "@/components/SdkProvider";
-import { useAuthToken as useSession } from "@/components/AuthTokenProvider";
-import { Market, MaxInt, Page, Playlist, PlaylistedTrack, QueryAdditionalTypes, SpotifyApi, Track, TrackItem, UserProfile, } from "@spotify/web-api-ts-sdk";
-import { useEffect, useState, useTransition } from "react";
-import * as SpotifyParse from "spotify-uri"
+import { Playlist, PlaylistedTrack, SpotifyApi, Track, TrackItem } from "@spotify/web-api-ts-sdk";
+import { useState } from "react";
+import { Image } from "react-native"
+import * as SpotifyParse from "spotify-uri";
 
 import {
-  ActivityIndicator,
-  Button,
-  SectionList,
-  StyleSheet,
+  Button, StyleSheet,
   Text,
   TextInput,
-  View,
+  View
 } from "react-native";
+
+function SpotifyPlaylist(props: {
+  url: string
+}) {
+
+
+
+  return (
+    <Image src="https://www.kindernetz.de/wissen/tierlexikon/1653523371341%2Csteckbrief-esel-102~_v-7x2@2dL_-bc89d1b8c81b47b66f836795f7bde50a08841ecb.jpg" />
+  )
+}
 
 async function getAllPlaylistItems(sdk: SpotifyApi, playlist_id: string): Promise<PlaylistedTrack<Track>[]> {
   const playlist = await sdk.playlists.getPlaylist(playlist_id)
@@ -136,6 +144,7 @@ export default function Index() {
 
   return (
     <View style={[styles.container]}>
+      <SpotifyPlaylist />
       <View style={[styles.playlist, styles.subcontainer]}>
         <View style={[styles.playlistInfo]}>
           <Text>Playlist1</Text>
